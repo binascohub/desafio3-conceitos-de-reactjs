@@ -15,14 +15,15 @@ function App() {
 
   async function handleAddRepository() {
 
-    //setRepositories([...repositories, `novo projeto ${Date.now()}`]);
-    //console.log(repositories);
-
-    api.post('repositories',{
+    const response = await api.post('repositories',{
       "title": `Desafio 1 GoStack ${Date.now()}`,
       "url": "https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/desafio-conceitos-nodejs",
       "techs": ["Node,js", "React"]
     });
+
+    const repository = response.data;
+
+    setRepositories([...repositories, repository]);
     
   }
 
